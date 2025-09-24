@@ -1,0 +1,437 @@
+@font-face {
+    font-family: 'acollia';
+    src: url('font/acollia-regular-webfont.woff2') format('woff2'),
+         url('font/acollia-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'royalford';
+    src: url('font/royalford-webfont.woff2') format('woff2'),
+         url('font/royalford-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fantaisieartistique';
+    src: url('font/fantaisieartistique-webfont.woff2') format('woff2'),
+         url('font/fantaisieartistique-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'vinque';
+    src: url('font/vinque_rg-webfont.woff2') format('woff2'),
+         url('font/vinque_rg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+   --dark_red: rgb(41, 27, 24);
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body, html {
+   height: 100%;
+   width: 100%;
+}
+
+/*Background image*/
+body > img {
+   min-height: 100%;
+   min-width: 1024px;
+   width: 100%;
+   height: auto;
+   position: fixed;
+   top: 0;
+   left: 0;
+}
+
+/*Header with button 'New book'*/
+.header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 70px;
+   width: 100%;
+   justify-items: end;
+   padding: 15px;
+}
+
+/*Container for copyright in footer*/
+.footer {
+   position: fixed;
+   top: calc(100% - 40px);
+   left: 0;
+   height: 30px;
+   width: 100%;
+   background-color: transparent;
+   font-size: 14px;
+   justify-items: end;
+}
+
+/*Copyright in footer*/
+.footer > p {
+   padding: 6px;
+   background-color: #FFFFFF64;
+}
+
+/*Copyright-links have no decoration*/
+a {
+   text-decoration: none;
+   color: white;
+}
+
+/*Button 'New book'*/
+.btn_new_book {
+   position: fixed;
+   left: calc(100% - 160px);
+   border: none;
+   outline: none;
+   border-radius: 5px;
+   background-color: #FFFFFF64;
+   width: 150px;
+   height: 40px;
+   padding: 10px;
+   color: rgb(57, 57, 57);
+   font-size: min(1em, 16px);
+   cursor: pointer;
+}
+
+/*Hover effect for button 'New book'*/
+.btn_new_book:hover {
+   background-color: white;
+   color: black;
+}
+
+/*Dialog to set info about new book*/
+dialog {
+   position: absolute;
+   border: 1px solid var(--dark_red);
+   border-radius: 5px;
+   background-color: var(--dark_red);
+   width: 668px;
+   height: 344px;
+}
+
+/*By open set content of dialog as a grid*/
+dialog[open]{
+   display: grid;
+   grid-template-columns: 263px 400px;
+} 
+
+.cover,
+.paper {
+   width: 100%;
+   height: 100%;
+}
+
+/*Frame around preview of cover's image*/ 
+.preview_frame {
+   position: absolute;
+   left: 37px;
+   top: 34px;
+   width: 193px;
+   height: 240px;
+   background-color: transparent;
+   border: 1px dotted white;
+}
+
+/*Preview of cover's image (by default invisible)*/
+.cover_image {
+   display: none;
+}
+
+/*Button 'Add cover'*/
+.add_cover {
+   position: absolute;
+   left: 53px;
+   top: 284px;
+   width: 160px;
+   height: 26px;
+   border: none;
+}
+
+/*Label 'Add cover'. Place it on center of image*/
+.add_cover > label {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 160px;
+   padding-left: 45px;
+   transform: translate(-50%, -50%);
+   cursor: pointer;
+}
+
+/*Input for select an image for cover. It will be used 
+only by JavaScript, therefore invisible*/
+#file_cover {
+   display: none;
+}
+
+/*Form to set info about new book*/
+form {
+   position: absolute;
+   top: 0;
+   width: 400px;
+   height: 340px;
+   color: var(--dark_red);
+   font-family: 'royalford', Helvetica, sans-serif;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+}
+
+/*To give some space between fields of a form*/
+form > p {
+   margin-bottom: 30px;
+}
+
+/*Text "Book's info"*/
+legend {
+   font-family: 'acollia', Helvetica, sans-serif;
+   font-size: 25px;
+   padding: 5px 0 0 120px;
+}
+
+/*Asterisk to point on required field*/
+.star {
+   font-weight: bold;
+   font-size: 25px;
+   color: white;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Part of form with fields 'Author', 'Title' and 'Pages'*/
+.book_info {
+   display: grid;
+   grid-template-columns: 1fr 270px 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   gap: 15px;
+   margin-bottom: 20px;
+}
+
+/*Inputs for fields 'Author', 'Title' and 'Pages'*/
+.book_info input {
+   border: none;
+   outline: none;
+   background-color: #FFFFFF24;
+   font-size: 20px;
+}
+
+/*Button 'Confirm' in dialog*/
+.confirm {
+   position: relative;
+   text-align: center;
+   margin-left: 250px;
+   cursor: pointer;
+}
+
+/*Text 'Confirm' in confirmation's button*/
+.confirm > div {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+   font-size: 20px;
+   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+/*Hover effect for button 'Confirm'*/
+.confirm > div:hover {
+   font-weight: bold;
+   font-size: 23px;
+   color: white;
+   text-shadow: 1px 1px 8px black, 0 0 1.5em black, 0 0 0.6em black;
+}
+
+/*Button 'X' in upper right corner of dialog*/
+.close {
+   position: absolute;
+   left: 370px;
+   top: 10px;
+   font-family: 'fantaisieartistique', Helvetica, sans-serif;
+   font-size: 30px;
+   color: goldenrod;
+   cursor: pointer;
+   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+/*Hover effect for close button*/
+.close:hover {
+   font-size: 36px;
+   color: rgb(177, 3, 3);
+   left: 367px;
+}
+
+/*Checkbox 'Already read'. For styling purpose is invisible*/
+.read_toggle input {
+   visibility: hidden;
+   display: block;
+   height: 0;
+   width: 0;
+   position: absolute;
+   overflow: hidden;
+}
+
+/*This will be shown as checkbox 'Already read'*/
+.read_toggle span {
+   position: absolute;
+   left: 145px;
+   top: 233px;
+   width: 14px;
+   height: 14px;
+   border: 1px solid var(--dark_red);
+   background-color: white;
+   cursor: pointer;
+   display: inline-block;
+}
+
+/*To set 'X' by clicking on checkbox 'Already read'*/
+.read_toggle input:checked + span::before {
+   content: 'X';
+   position: absolute;
+   top: -12px;
+   left: -3px;
+   font-family: 'vinque', Helvetica, sans-serif;
+   font-size: 26px;
+}
+
+/*By default after checkbox 'Already read' will be always shown 'No'*/
+.read_toggle input + span::after {
+   position: absolute;
+   top: -3px;
+   left: 25px;
+   content: 'No';
+}
+
+/*Override previous rule: if checkbox is checked, then will be shown 'Yes'*/
+.read_toggle input:checked + span::after {
+   position: absolute;
+   top: -3px;
+   left: 25px;
+   content: 'Yes';
+}
+
+/*Grid with all books*/
+.content {
+   position: absolute;
+   overflow: auto;
+   left: 25px;
+   top: 100px;
+   display: grid;
+   width: calc(100vw - 30px);
+   height: calc(100vh - 100px);
+   /* grid-template-columns: repeat(6, 250px); */
+   grid-template-columns: repeat(auto-fit, 250px);
+   grid-template-rows: 340px;
+   grid-auto-rows: 340px;
+   gap: 15px;
+}
+
+/*Single cell (book) in grid*/
+.book {
+   background-color: #FFFFFF84;
+   border-radius: 5px;
+   padding: 10px;
+   font-size: 18px;
+}
+
+/*Book's cover in cell*/ 
+.book > img {
+   margin: 10px 0 10px 30px;
+}
+
+/*Texts 'Author', 'Title', 'Pages' and 'Already read' in cell*/
+.book p {
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
+/*Values of fields 'Author', 'Title', 'Pages' and 'Already read' in cell*/
+.book p > span {
+   font-weight: normal;
+}
+
+/*Hover effect for a book's cell*/
+.book:hover {
+   background-color: #FFFFFFCC;
+   border: 1px solid white;
+}
+
+/*Container for toggle for status 'Already read'*/
+.toggle {
+   position: absolute;
+   display: inline-block;
+   width: 50px;
+   height: 22px;
+   transform: translate(126px, -27px);
+}
+
+/*For purpose of styling hide input-box in toggle of status 'Already read'*/
+.toggle input {
+   display: none;
+}
+
+/*Slider to imitate toggle effect*/
+.slider {
+   position: absolute;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   cursor: pointer;
+   background-color: #6E6D6D;
+   transition: 0.3s;
+   border-radius: 34px;
+}
+
+/*Circle in toggle*/
+.slider::before {
+   position: absolute;
+   content: '';
+   height: 18px;
+   width: 18px;
+   left: 2px;
+   bottom: 2px;
+   background-color: rgba(65, 7, 7, 0.507);
+   transition: 0.3s;
+   border-radius: 50%;
+}
+
+/*To change background in toggle as toggle goes on status 'on'*/
+input:checked + .slider {
+   background-color: #006600;
+}
+
+/*To move circle in toggle to the end*/
+input:checked + .slider::before {
+   transform: translateX(28px);
+   background-color: white;
+}
+
+/*Button 'trash can' in a book's cell*/
+.btn_delete {
+   width: 38px;
+   height: 38px;
+   border-radius: 5px;
+   border: 1px solid grey;
+   cursor: pointer;
+   transform: translate(156px, -310px);
+}
+
+/*Hover effect for delete button*/
+.btn_delete:hover {
+   background-color: #FFFFFFAA;
+}

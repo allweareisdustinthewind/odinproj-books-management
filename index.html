@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Books Management</title>
+   <!--Each link will be opened in new tab-->
+   <base target="_blank">
+   <link rel="stylesheet" href="styles.css">
+   <script src="script.js" defer></script>
+</head>
+<body>
+   <img src="img/background.jpg" width="2386" height="1591" alt="background">
+   <div class="header">
+      <button class="btn_new_book">New Book</button>
+      <dialog>
+         <div class="cover">
+            <img src="img/cover.png" width="263" height="337" alt="book cover">
+            <div class="preview_frame">
+               <img class="cover_image" width="193" height="240" alt="selected cover">
+            </div>
+            <div class="add_cover">
+               <img src="img/plate.png" width="160" height="26" alt="add cover">
+               <label for="file_cover">Add cover</label>
+               <input type="file" id="file_cover" accept="image/*" name="file_cover">
+            </div>
+         </div>
+         <div class="paper">
+            <img src="img/paper.png" width="400" height="337" alt="boo paper">
+            <form>
+               <legend>Book's Info</legend>
+               <p>All required fields are marked with <span class="star">*</span><span class="close">X</span></p>
+               <div class="book_info">
+                  <label for="author">Author:</label>
+                  <input name="author" id="author" class="required">
+                  <span class="star">*</span>
+                  <label for="title">Title:</label>
+                  <input name="title" id="title" class="required">
+                  <span class="star">*</span>
+                  <label for="pages">Pages:</label>
+                  <input name="pages" id="pages" class="required" type="number" min="0">
+                  <span class="star">*</span>
+               </div>
+               <label class="read_toggle">Already read?
+                  <input type="checkbox">
+                  <span class="read_status_checkbox"></span>
+               </Label>
+               <div class="confirm">
+                  <img src="img/seal.png" alt="confirm">
+                  <div>Confirm</div>
+               </div>
+            </form>
+         </div>
+      </dialog>
+   </div>
+   <div class="content">
+   </div>
+   <div class="footer">
+      <p>Photo was created by <a href="https://www.pexels.com/@enginakyurt/">Engin Akyurt</a> 
+         and taken from <a href="https://www.pexels.com/photo/selective-focus-photography-of-brown-wooden-book-shelf-2952871/">Pexels.com</a></p>
+   </div>
+</body>
+</html>
